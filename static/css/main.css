@@ -1,0 +1,99 @@
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header styles */
+header {
+    background-color: #FFD600;
+}
+
+header a {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #4a4a4a;
+}
+
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: #1a1a1a;
+    color: #FFD600;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+}
+
+/* Form styles */
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #FFD600;
+    box-shadow: 0 0 0 3px rgba(255, 214, 0, 0.3);
+}
+
+/* Property card styles */
+.property-card {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+/* FlatFinder specific styles */
+.flatfinder-header {
+    background-color: #FFD600;
+    color: #1a1a1a;
+}
+
+.flatfinder-footer {
+    background-color: #1a1a1a;
+    color: #FFD600;
+}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <img src="{{ url_for('static', filename='img/placeholder.svg') }}" alt="{{ property.title }}" class="w-full h-64 object-cover">
+    <div class="p-6">
+        <h1 class="text-3xl font-bold mb-4">{{ property.title }}</h1>
+        <p class="text-2xl text-gray-700 mb-4">${{ property.price }}</p>
+        <p class="text-gray-600 mb-2">{{ property.bedrooms }} bed, {{ property.bathrooms }} bath | {{ property.area }} sqft</p>
+        <p class="text-gray-600 mb-4">{{ property.address }}</p>
+        <p class="text-gray-700 mb-6">{{ property.description }}</p>
+        
+        <h2 class="text-2xl font-semibold mb-4">Virtual Tour</h2>
+        <div id="video-container" class="mb-6">
+            <button id="start-call" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Start Virtual Tour</button>
+        </div>
+        
+        <h2 class="text-2xl font-semibold mb-4">Questionnaire</h2>
+        <a href="{{ url_for('main.questionnaire', property_id=property.id) }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Fill Questionnaire</a>
+    </div>
+</div>
+
+<script src="https://unpkg.com/simple-peer@9.11.0/simplepeer.min.js"></script>
+<script src="{{ url_for('static', filename='js/video-call.js') }}"></script>
+{% endblock %}

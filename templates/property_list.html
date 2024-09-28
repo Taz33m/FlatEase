@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bg-gray-100 py-8">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-gray-900 text-center">FlatFinder Listings</h2>
+        
+        <div class='mb-8 flex justify-between items-center'>
+            <input type='text' placeholder='Search properties...' class='w-2/3 px-4 py-3 rounded-md border border-gray-300 text-gray-900 text-lg focus:outline-none focus:ring-2 focus:ring-yellow-400'>
+            <a href='{{ url_for('main.add_property') }}' class='bg-black text-yellow-400 px-6 py-3 rounded-md font-semibold hover:bg-gray-800 transition-colors'>
+                Add Property
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="py-12">
+    <div class="container mx-auto px-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="mb-4 p-4 rounded-md {% if category == 'error' %}bg-red-100 text-red-700{% else %}bg-green-100 text-green-700{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for property_item in properties %}
+            <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                <img src="{{ property_item.photo_url }}" alt="{{ property_item.property.title }}" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">{{ property_item.property.title }}</h3>
+                    <p class="text-2xl font-bold text-yellow-600 mb-4">${{ '{:,.0f}'.format(property_item.property.price) }}{% if property_item.property.listing_type == 'rent' %}/month{% endif %}</p>
+                    <div class="flex justify-between text-sm text-gray-600 mb-4">
+                        <span class="flex items-center"><i class="fas fa-bed mr-2"></i> {{ property_item.property.bedrooms }} bed</span>
+                        <span class="flex items-center"><i class="fas fa-bath mr-2"></i> {{ property_item.property.bathrooms }} bath</span>
+                        <span class="flex items-center"><i class="fas fa-vector-square mr-2"></i> {{ property_item.property.area }} sqft</span>
+                    </div>
+                    <p class="text-sm text-gray-600 flex items-start mb-6">
+                        <i class="fas fa-map-marker-alt mr-2 mt-1"></i>
+                        {{ property_item.property.address }}
+                    </p>
+                    <div class="flex justify-between">
+                        <a href="{{ url_for('main.property_detail', id=property_item.property.id) }}" class="block w-1/2 text-center bg-yellow-400 text-gray-900 py-2 rounded-md font-semibold hover:bg-yellow-500 transition-colors mr-2">
+                            View Details
+                        </a>
+                        <form action="{{ url_for('main.remove_property', id=property_item.property.id) }}" method="POST" class="w-1/2">
+                            <button type="submit" class="block w-full text-center bg-red-500 text-white py-2 rounded-md font-semibold hover:bg-red-600 transition-colors" onclick="return confirm('Are you sure you want to remove this property?')">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

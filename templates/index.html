@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="bg-yellow-400 text-gray-900 py-20 px-6 md:px-10">
+    <div class="container mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Find Your Perfect Flat</h1>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">Discover cutting-edge solutions that transform your property journey with FlatFinder.</p>
+        <a href="{{ url_for('main.property_list') }}" class="bg-gray-900 text-yellow-400 hover:bg-gray-800 transition-colors text-lg py-3 px-8 rounded-md font-semibold">
+            Explore Listings
+        </a>
+    </div>
+</section>
+
+<section class="py-20 px-6 md:px-10">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">Our Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Advanced AI</h3>
+                <p class="text-gray-600">Harness the power of artificial intelligence for smarter property decisions.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Cloud Integration</h3>
+                <p class="text-gray-600">Seamless cloud solutions for efficient property management and collaboration.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Secure Platform</h3>
+                <p class="text-gray-600">Top-notch security measures to protect your data and transactions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-gray-900 text-white py-20 px-6 md:px-10">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">Ready to Find Your Flat?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of clients already using FlatFinder's innovative real estate solutions.</p>
+        <form class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+            <input type="email" placeholder="Enter your email" class="w-full md:w-auto px-4 py-2 rounded-md text-gray-900">
+            <button type="submit" class="bg-yellow-400 text-gray-900 px-6 py-2 rounded-md font-semibold hover:bg-yellow-500 transition-colors">
+                Get Started
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}
